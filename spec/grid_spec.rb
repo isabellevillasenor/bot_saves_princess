@@ -1,5 +1,4 @@
-require 'rspec'
-require 'pry'
+require 'spec_helper'
 require_relative '../lib/grid'
 
 describe Grid do
