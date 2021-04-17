@@ -39,6 +39,9 @@ The bot will always be placed in the middle of the grid, so grid needs to have a
 #### Create Grid Method
 - For each index that's passed into the block, change the element to '-' and times that by the grid_size that's being passed in to ensure it's a square output. (NxN)
 
+#### Place Bot Method
+- To find the center of a square, if you have two coordinates (i.e. a = x/y & b = x/y) you would take the arguments of both corners, put them over two, add each x and each y and then divide by two and that will give you the coordinates of the center. However, since we're just getting passed the argument of the desired grid size, we can divide that number by two, twice, and use the output as the index that will be where `m` should be placed.
+
 ### Bot Movement
 
 ### Path to Princess
