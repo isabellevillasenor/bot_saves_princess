@@ -32,7 +32,12 @@ Upon reading I broke the problem into three primary components needed in order t
 I chose to abstract each component into their own class, contained within the lib folder, as a means to follow SRP and encapsulation. The same structure goes for the spec folder, as well as GitWorkflow. PR's will be sent based off completion per functionality, as well as completion of proper edge case testing. I will compile all the code and required files into the `hacker_rank_runner` file, in order to allow for direct copy/pasting my solution into the HackerRank Interface. 
 
 ### Grid
-The bot will always be placed in the middle of the grid, so grid needs to have a way to ensure that only odd numbers are accepted. `Array.new()` will need to be called in the initialize so that the array containing the grid will be saved with the Grid object upon instantiation. 
+The bot will always be placed in the middle of the grid, so grid needs to have a way to ensure that only odd numbers are accepted. 
+#### Initialize Method
+- `Array.new()` will need to be called in the initialize so that the array containing the grid will be saved with the Grid object upon instantiation. 
+- Error Handling will also live in the initialize as opposed to the `create_grid` method in order to prevent initializing a Grid object with null values.
+#### Create Grid Method
+- For each index that's passed into the block, change the element to '-' and times that by the grid_size that's being passed in to ensure it's a square output. (NxN)
 
 ### Bot Movement
 
