@@ -1,3 +1,5 @@
+# Here is where the compiled code with live once complete to copy/paste into HackerRank
+
 def displayPathtoPrincess(n,grid)
   return ""
 end
