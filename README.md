@@ -25,8 +25,8 @@ bundle exec rspec
 ## Thought Process
 Upon reading I broke the problem into three primary components needed in order to complete the task.
 - [Grid](#grid)
-- [Bot Movement](#bot_movement)
-- [Path to Princess](#path_to_princess)
+- [Bot Movement](#bot-movement)
+- [Path to Princess](#path-to-princess)
 
 ### File Structure
 I chose to abstract each component into their own class, contained within the lib folder, as a means to follow SRP and encapsulation. The same structure goes for the spec folder, as well as GitWorkflow. PR's will be sent based off completion per functionality, as well as completion of proper edge case testing. I will compile all the code and required files into the `hacker_rank_runner` file, in order to allow for direct copy/pasting my solution into the HackerRank Interface. 
@@ -42,6 +42,12 @@ The bot will always be placed in the middle of the grid, so grid needs to have a
 #### Place Bot Method
 - To find the center of a square, if you have two coordinates (i.e. a = x/y & b = x/y) you would take the arguments of both corners, put them over two, add each x and each y and then divide by two and that will give you the coordinates of the center. However, since we're just getting passed the argument of the desired grid size, we can divide that number by two, twice, and use the output as the index that will be where `m` should be placed.
 
+#### Place Princess Method
+- Working with a 3x3 grid for example, given our current structure of the grid, we know it will look similar to this `["123", "456", "789"]`. From here we know that `[0][0]` will equal `1`, aka the top left corner. The remaining corners in this set up are 
+- `[0][-1] = 3 (top right)` 
+- `[-1][0] = 7 (bottom left)`
+- `[-1][-1] = 9 (bottom right)`
+No matter the combination of `[0]` and `[-1]` the princess will get put into a corner, so we can store `[0]` and `[-1]` and call `.sample` when we place the princess, as any combination will get us the desired outcome. 
 ### Bot Movement
 
 ### Path to Princess
