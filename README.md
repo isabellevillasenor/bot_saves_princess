@@ -3,7 +3,7 @@
 ### Table of Contents
 - [How To Install Locally](#how-to-install-locally)
 - [Tools Used](#tools-used)
-- [Thought Process](#thought_process)
+- [Thought Process](#thought-process)
 
 
 ## How To Install Locally
