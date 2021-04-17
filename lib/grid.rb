@@ -8,6 +8,7 @@ class Grid
     @grid = Array.new(grid_size)
     create_grid(grid_size)
     place_bot(grid_size)
+    place_princess
   end
 
   def create_grid(grid_size)
@@ -18,5 +19,10 @@ class Grid
 
   def place_bot(grid_size)
     @grid[(grid_size / 2)][(grid_size / 2)] = 'm'
+  end
+
+  def place_princess
+    corner = 0, -1
+    @grid[corner.sample][corner.sample] = 'p'
   end
 end
