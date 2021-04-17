@@ -19,7 +19,7 @@ describe Grid do
     grid_1 = Grid.new(3)
     grid_2 = Grid.new(5)
 
-    expect(grid_1.grid[1]).to include('-m-')
-    expect(grid_2.grid[2]).to include('-m-')
+    expect(grid_1.grid[1.5][1.5]).to eq('m')
+    expect(grid_2.grid[2.5][2.5]).to eq('m')
   end
 end
