@@ -32,4 +32,12 @@ describe Grid do
     expect(grid_2.grid[0].include?('p') || grid_1.grid[98].include?('p')).to be true
     expect(grid_2.grid[1...97].include?('p')).to be false
   end
+
+  it 'should store the princesses coordinates after placement' do
+    grid_1 = Grid.new(3)
+    grid_2 = Grid.new(99)
+
+    expect(grid_1.princess).to be_an Array
+    expect(grid_2.princess).to be_an Array
+  end
 end

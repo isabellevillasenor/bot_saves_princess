@@ -1,6 +1,6 @@
 class Grid
-  attr_reader :grid, :m
-  
+  attr_reader :grid, :princess
+
   def initialize(grid_size)
     raise ArgumentError.new('Grid Size Must Be An Odd Number, Please Try Again') unless grid_size.odd?
     raise ArgumentError.new('Grid Size Must Be Greater Than 2, Please Try Again') unless grid_size > 2
@@ -9,6 +9,7 @@ class Grid
     create_grid(grid_size)
     place_bot(grid_size)
     place_princess
+    @princess = princess_coordinates.compact.flatten
   end
 
   def create_grid(grid_size)
@@ -24,5 +25,12 @@ class Grid
   def place_princess
     corner = 0, -1
     @grid[corner.sample][corner.sample] = 'p'
+  end
+
+  def princess_coordinates
+    corners = [0, 0], [0, -1], [-1, 0], [-1, -1]
+    corners.map do |corner|
+      corner if @grid[corner[0]][corner[1]] == 'p'
+    end
   end
 end
