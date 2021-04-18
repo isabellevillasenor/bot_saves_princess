@@ -5,7 +5,7 @@
 - [Tools Used](#tools-used)
 - [Thought Process](#thought-process)
 
-
+---
 ## How To Install Locally
 For usage on your local machine run the following commands into your terminal:
 
@@ -16,21 +16,25 @@ bundle install
 bundle exec rspec
 ```
 
+---
 ## Tools Used
 
 - I used the [RSpec Gem](https://rspec.info/) to execute testing.
 - I used the [SimpleCov Gem](https://github.com/simplecov-ruby/simplecov) to ensure 100% Lines Of Code were tested.
 - I used the [Pry Gem](https://github.com/pry/pry) to simulate a developer console.
 
+---
 ## Thought Process
 Upon reading I broke the problem into three primary components needed in order to complete the task.
 - [Grid](#grid)
 - [Bot Movement](#bot-movement)
 - [Path to Princess](#path-to-princess)
 
+---
 ### File Structure
 I chose to abstract each component into their own class, contained within the lib folder, as a means to follow SRP and encapsulation. The same structure goes for the spec folder, as well as GitWorkflow. PR's will be sent based off completion per functionality, as well as completion of proper edge case testing. I will compile all the code and required files into the `hacker_rank_runner` file, in order to allow for direct copy/pasting my solution into the HackerRank Interface. 
 
+---
 ### Grid
 The bot will always be placed in the middle of the grid, so grid needs to have a way to ensure that only *odd numbers* are accepted. The grid can never be less than 3x3 in order to properly complete task. 
 #### Initialize Method
@@ -48,6 +52,18 @@ The bot will always be placed in the middle of the grid, so grid needs to have a
 - `[-1][0] = 7 (bottom left)`
 - `[-1][-1] = 9 (bottom right)`
 No matter the combination of `[0]` and `[-1]` the princess will get put into a corner, so we can store `[0]` and `[-1]` and call `.sample` when we place the princess, as any combination will get us the desired outcome. 
+
+#### Princess Coordinates
+- We will need to have to the princesses coordinates in order to calculate the correct pathing from the bot to the princess. The easiest way to do this is to iterate through an array that holds the 4 placement possibilities, and compare them to the grid. If the corner contains 'p' then return that corner. Since `.flat_map` will just flatten the entire array into one, `.map` would be the most optimal, however it'll still give us `nil` values for where the criteria isn't met. 
+- It makes sense to store this method isn't of the grid class, as it's not bot functionality. We could make an additional Princess class, however, I don't believe this method/completion of the task requires the need for one.
+
+---
 ### Bot Movement
+- Following similar thought process to `place_princess` method, we know we can move around inside of our grid by using `-/+`. We also know we're going to need to store the information on where the bot has been placed dependent on the size of the grid, so we know where we're starting. We also need to know where the princess is located so we know where to go. On a 3x3 grid, we can assume: 
+- If the princess is located on a `lower number x axis`, we should move `up` 
+- If she's located on a `higher number x axis` we should move `down` 
+- Similarly, if she's located on a `lower number y axis` we should move to the `left`
+- And if it's a `higher numbered y axis` we should move to the `right`
+First I'll need to build out the Bot class to get the coordinates of where the bot is, as well as store the movement functionality. Next, create an if statement that compares the x/y values in order to execute movement. 
 
 ### Path to Princess
