@@ -25,7 +25,7 @@ bundle exec rspec
 - I used the [Pry Gem](https://github.com/pry/pry) to simulate a developer console.
 
 ---
-## Thought Process
+## Thought Process for Bot Saves Princess Problem 1
 Upon reading I broke the problem into three primary components needed in order to complete the task.
 - [Grid](#grid)
 - [Bot Movement](#bot-movement)
@@ -75,7 +75,7 @@ Now that the bot is able to tell if it needs to go up/down/left/right, we can ma
 
 ---
 
-## Bot Saves Princess Problem 2
+## Thought Process for Bot Saves Princess Problem 2
 
 As far as creating the grid goes, we can keep most functionality the same except on where the bot or princess is placed. We can also remove the Argument Error for odd numbers only, as the bot no longer needs to be placed in the middle. 
 

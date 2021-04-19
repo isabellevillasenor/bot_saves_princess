@@ -12,6 +12,9 @@ describe Grid do
 
   it 'should error when trying to instantiate with an even number of grid cells' do
     expect{ Grid.new(4) }.to raise_error(ArgumentError)
+  end
+
+  it 'should error when trying to instantiate with number less than 3' do
     expect{ Grid.new(1) }.to raise_error(ArgumentError)
   end
 
