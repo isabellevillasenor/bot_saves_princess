@@ -25,4 +25,8 @@ describe Grid do
     expect(grid_1.princess_column).to be_an Integer
     expect(grid_1.grid[0].include?('p') || grid_1.grid[1].include?('p') || grid_1.grid[2].include?('p')).to be true
   end
+
+  it 'should raise argument error if user tries to make board size less than 2' do
+    expect{ Grid.new(1) }.to raise_error(ArgumentError)
+  end
 end
