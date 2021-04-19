@@ -1,9 +1,9 @@
 class Grid
-  attr_reader :grid, 
-              :bot_row, 
-              :bot_collumn,
+  attr_reader :grid,
+              :bot_row,
+              :bot_column,
               :princess_row,
-              :princess_collumn
+              :princess_column
 
   def initialize(grid_size)
     raise ArgumentError.new('Grid Size Must Be Greater Than 2, Please Try Again') unless grid_size > 2
@@ -11,11 +11,11 @@ class Grid
     @grid = Array.new(grid_size)
     create_grid(grid_size)
     @bot_row = nil
-    @bot_collumn = nil
+    @bot_column = nil
     place_bot(grid_size)
     @princess_row = nil
-    @princess_collumn = nil
-    place_princess(@bot_row, @bot_collumn, grid_size)
+    @princess_column = nil
+    place_princess(@bot_row, @bot_column, grid_size)
     # @princess = princess_coordinates.compact.flatten
   end
 
@@ -27,17 +27,17 @@ class Grid
 
   def place_bot(grid_size)
     @bot_row = rand(0...(grid_size - 1))
-    @bot_collumn = rand(0...(grid_size - 1))
-    @grid[@bot_row][@bot_collumn] = 'm'
+    @bot_column = rand(0...(grid_size - 1))
+    @grid[@bot_row][@bot_column] = 'm'
   end
 
-  def place_princess(bot_row, bot_collumn, grid_size)
+  def place_princess(bot_row, bot_column, grid_size)
     @princess_row = rand(0...(grid_size - 1))
-    @princess_collumn = rand(0...(grid_size - 1))
-    if [@princess_row, @princess_collumn] != [bot_row, bot_collumn]
-      @grid[@princess_row][@princess_collumn] = 'p'
+    @princess_column = rand(0...(grid_size - 1))
+    if [@princess_row, @princess_column] != [bot_row, bot_column]
+      @grid[@princess_row][@princess_column] = 'p'
     else
-      place_princess(bot_row, bot_collumn, grid_size)
+      place_princess(bot_row, bot_column, grid_size)
     end
   end
 end
