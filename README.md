@@ -59,7 +59,7 @@ No matter the combination of `[0]` and `[-1]` the princess will get put into a c
 - It makes sense to store this method in the grid class, as it's not bot functionality. We could make an additional Princess class, however, I don't believe this method/completion of the task requires the need for one.
 
 ---
-### Bot Movement
+#### Bot Movement
 - Following similar thought process to `place_princess` method, we know we can move around inside of our grid by using `-/+`. We also know we're going to need to store the information on where the bot has been placed dependent on the size of the grid, so we know where we're starting. We also need to know where the princess is located so we know where to go. We can assume: 
 - If the princess is located on a `lower number x axis`, we should move `up` 
 - If she's located on a `higher number x axis` we should move `down` 
@@ -69,6 +69,13 @@ First I'll need to build out the Bot class to get the coordinates of where the b
 However, if you think about a 3x3 grid, the bot will be located at [1.5, 1.5], which will always be higher than both 0 and -1. 
 
 ---
-### Path to Princess
+#### Path to Princess
 Now that the bot is able to tell if it needs to go up/down/left/right, we can make a `path_to_princess` method that calls on both the `vertical_movement` and `horizontal_movement`, and shovels the outputs into a blank array until bot placement == princess placement. To better follow SRP I will make use of a SavePrincess Class that inherits from the Bot class.
 - I relocated the bot movement methods from the Bot Class to the Save Princess Class for better flow with the path_to_princess method
+
+---
+
+## Bot Saves Princess Problem 2
+
+As far as creating the grid goes, we can keep most functionality the same except on where the bot or princess is placed. We can also remove the Argument Error for odd numbers only, as the bot no longer needs to be placed in the middle. 
+
