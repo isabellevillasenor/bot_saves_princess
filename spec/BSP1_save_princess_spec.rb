@@ -1,7 +1,7 @@
 require 'spec_helper'
-require_relative '../lib/save_princess'
-require_relative '../lib/bot'
-require_relative '../lib/grid'
+require_relative '../BSP1_lib/save_princess'
+require_relative '../BSP1_lib/bot'
+require_relative '../BSP1_lib/grid'
 
 describe SavePrincess do
   it 'should instantiate with a new instance of grid and bot' do
