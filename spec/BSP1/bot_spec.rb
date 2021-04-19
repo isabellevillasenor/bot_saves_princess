@@ -1,5 +1,5 @@
 require 'spec_helper'
-require_relative '../BSP1_lib/bot'
+require_relative '../../BSP1_lib/bot'
 
 describe Bot do
   it 'should instantiate with correct x/y coordinates for bot' do
