@@ -6,7 +6,7 @@ class Grid
               :princess_column
 
   def initialize(grid_size)
-    raise ArgumentError.new('Grid Size Must Be Greater Than 2, Please Try Again') unless grid_size > 2
+    raise ArgumentError.new('Grid Size Must Be Greater Than 1, Please Try Again') unless grid_size > 1
 
     @grid = Array.new(grid_size)
     create_grid(grid_size)
@@ -16,7 +16,6 @@ class Grid
     @princess_row = nil
     @princess_column = nil
     place_princess(@bot_row, @bot_column, grid_size)
-    # @princess = princess_coordinates.compact.flatten
   end
 
   def create_grid(grid_size)
