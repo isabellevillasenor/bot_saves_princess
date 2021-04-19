@@ -1,4 +1,5 @@
 # Save The Princess Challenge from HackerRank
+To plug my solution into HackerRank, please copy and paste the contents of the hacker_rank_runner file. Cheers!
 
 ### Table of Contents
 - [How To Install Locally](#how-to-install-locally)
@@ -55,15 +56,19 @@ No matter the combination of `[0]` and `[-1]` the princess will get put into a c
 
 #### Princess Coordinates
 - We will need to have to the princesses coordinates in order to calculate the correct pathing from the bot to the princess. The easiest way to do this is to iterate through an array that holds the 4 placement possibilities, and compare them to the grid. If the corner contains 'p' then return that corner. Since `.flat_map` will just flatten the entire array into one, `.map` would be the most optimal, however it'll still give us `nil` values for where the criteria isn't met. 
-- It makes sense to store this method isn't of the grid class, as it's not bot functionality. We could make an additional Princess class, however, I don't believe this method/completion of the task requires the need for one.
+- It makes sense to store this method in the grid class, as it's not bot functionality. We could make an additional Princess class, however, I don't believe this method/completion of the task requires the need for one.
 
 ---
 ### Bot Movement
-- Following similar thought process to `place_princess` method, we know we can move around inside of our grid by using `-/+`. We also know we're going to need to store the information on where the bot has been placed dependent on the size of the grid, so we know where we're starting. We also need to know where the princess is located so we know where to go. On a 3x3 grid, we can assume: 
+- Following similar thought process to `place_princess` method, we know we can move around inside of our grid by using `-/+`. We also know we're going to need to store the information on where the bot has been placed dependent on the size of the grid, so we know where we're starting. We also need to know where the princess is located so we know where to go. We can assume: 
 - If the princess is located on a `lower number x axis`, we should move `up` 
 - If she's located on a `higher number x axis` we should move `down` 
 - Similarly, if she's located on a `lower number y axis` we should move to the `left`
 - And if it's a `higher numbered y axis` we should move to the `right`
-First I'll need to build out the Bot class to get the coordinates of where the bot is, as well as store the movement functionality. Next, create an if statement that compares the x/y values in order to execute movement. 
+First I'll need to build out the Bot class to get the coordinates of where the bot is, as well as store the movement functionality. Next, create an if statement that compares the x/y values in order to execute movement
+However, if you think about a 3x3 grid, the bot will be located at [1.5, 1.5], which will always be higher than both 0 and -1. 
 
+---
 ### Path to Princess
+Now that the bot is able to tell if it needs to go up/down/left/right, we can make a `path_to_princess` method that calls on both the `vertical_movement` and `horizontal_movement`, and shovels the outputs into a blank array until bot placement == princess placement. To better follow SRP I will make use of a SavePrincess Class that inherits from the Bot class.
+- I relocated the bot movement methods from the Bot Class to the Save Princess Class for better flow with the path_to_princess method
