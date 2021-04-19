@@ -1,18 +1,20 @@
 require_relative 'grid'
+require_relative 'bot'
 
-class SavePrincess
+class SavePrincess < Bot
   attr_accessor :grid,
                 :bot_row,
                 :bot_column,
                 :princess_row,
                 :princess_column
 
-  def initialize(grid_size)
-    @grid = Grid.new(grid_size)
-    @bot_column = @grid.bot_column
-    @bot_row = @grid.bot_row
-    @princess_column = @grid.princess_column
-    @princess_row = @grid.princess_row
+  def initialize(grid_size, row, column)
+    @grid = Grid.new(grid_size, row, column)
+    @bot = Bot.new(@grid)
+    @bot_column = @bot.bot_column
+    @bot_row = @bot.bot_row
+    @princess_column = @bot.princess_column
+    @princess_row = @bot.princess_row
   end
 
   def next_move
@@ -23,24 +25,14 @@ class SavePrincess
       move = vertical_movement
     end
     move
-    # binding.pry
   end
 
   def horizontal_movement
-    if @bot_row == @princess_row
-      if @bot_column > @princess_column
-        @bot_row -= 1
-        'RIGHT'
-      elsif @bot_column < @princess_column
-        @bot_row += 1
-        'LEFT'
-      end
-    end
-    if @bot_row > @princess_row
-      @bot_row -= 1
+    if @bot_column > @princess_column
+      @bot_column -= 1
       'LEFT'
-    elsif @bot_row < @princess_row
-      @bot_row += 1
+    elsif @bot_column < @princess_column
+      @bot_column += 1
       'RIGHT'
     end
   end
@@ -48,19 +40,24 @@ class SavePrincess
   def vertical_movement
     if @bot_column == @princess_column
       if @bot_row > @princess_row
-        @bot_column -= 1
-        'DOWN'
-      elsif @bot_row < @princess_row
-        @bot_column += 1
+        @bot_row -= 1
         'UP'
+      elsif @bot_row < @princess_row
+        @bot_row += 1
+        'DOWN'
+      end
+    else
+      if @bot_row > @princess_row
+        @bot_row -= 1
+        'UP'
+      elsif @bot_row < @princess_row
+        @bot_row += 1
+        'DOWN'
       end
     end
-    if @bot_column > @princess_column
-      @bot_column -= 1
-      'UP'
-    elsif @bot_column < @princess_column
-      @bot_column += 1
-      'DOWN'
-    end
+  end
+
+  def princess_saved
+    [@bot_row, @bot_column] == [@princess_row, @princess_column]
   end
 end
