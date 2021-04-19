@@ -1,5 +1,5 @@
 require 'spec_helper'
-require '../lib/grid'
+require_relative '../lib/grid'
 
 describe Grid do
   it 'should instantiate with correct grid size' do
@@ -29,7 +29,7 @@ describe Grid do
 
     expect(grid_1.grid[0].include?('p') || grid_1.grid[2].include?('p')).to be true
     expect(grid_1.grid[1].include?('p')).to be false
-    expect(grid_2.grid[0].include?('p') || grid_1.grid[98].include?('p')).to be true
+    expect(grid_2.grid[0].include?('p') || grid_2.grid[98].include?('p')).to be true
     expect(grid_2.grid[1...97].include?('p')).to be false
   end
 
