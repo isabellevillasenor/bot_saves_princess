@@ -1,6 +1,6 @@
 require 'spec_helper'
-require_relative '../../BSP2_lib/save_princess'
-require_relative '../../BSP2_lib/grid'
+require_relative '../../save_princess'
+require_relative '../../grid'
 
 describe SavePrincess do
   it 'should instantiate with a new instance of grid' do
