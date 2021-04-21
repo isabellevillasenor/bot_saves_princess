@@ -17,6 +17,7 @@ bundle install
 bundle exec rspec ./BSP1_lib/spec
 bundle exec rspec ./BSP2_lib/spec
 ```
+Test Coverage at 100% For Both Spec Folders
 
 ---
 ## Tools Used
