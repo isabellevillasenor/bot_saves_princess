@@ -3,22 +3,18 @@ require_relative '../../bot'
 
 describe Bot do
   it 'should instantiate with correct x/y coordinates for bot' do
-    grid_1 = Grid.new(3)
-    grid_2 = Grid.new(99)
-    bot_1 = Bot.new(grid_1)
-    bot_2 = Bot.new(grid_2)
-
-    expect(bot_1.x).to eq(1)
-    expect(bot_1.y).to eq(1)
-    expect(bot_2.x).to eq(49)
-    expect(bot_2.y).to eq(49)
-  end
-
-  it 'should instantiate with the coordinates of the princess' do
-    grid = Grid.new(3)
+    grid = Grid.new(3, ["---", "-m-", "p--"])
     bot = Bot.new(grid)
 
-    expect(bot.princess_x).to be_an Integer
-    expect(bot.princess_y).to be_an Integer
+    expect(bot.x).to eq(1)
+    expect(bot.y).to eq(1)
+  end
+
+  it 'should instantiate with correct coordinates for princess' do
+    grid = Grid.new(3, ["---", "-m-", "p--"])
+    bot = Bot.new(grid)
+
+    expect(bot.princess_x).to eq(2)
+    expect(bot.princess_y).to eq(0)
   end
 end
