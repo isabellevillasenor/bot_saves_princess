@@ -1,5 +1,5 @@
 require 'spec_helper'
-require_relative '../../BSP1_lib/grid'
+require_relative '../../grid'
 
 describe Grid do
   it 'should instantiate with correct grid size' do

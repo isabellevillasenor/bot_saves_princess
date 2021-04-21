@@ -14,7 +14,8 @@ For usage on your local machine run the following commands into your terminal:
 git clone git@github.com:isabellevillasenor/bot_saves_princess.git
 cd bot_saves_princess
 bundle install
-bundle exec rspec
+bundle exec rspec ./BSP1_lib/spec
+bundle exec rspec ./BSP2_lib/spec
 ```
 
 ---
@@ -76,6 +77,18 @@ Now that the bot is able to tell if it needs to go up/down/left/right, we can ma
 ---
 
 ## Thought Process for Bot Saves Princess Problem 2
+- [Grid](#grid)
+- [Bot Movement](#bot-movement)
+- [Next Move](#next-move)
 
-As far as creating the grid goes, we can keep most functionality the same except on where the bot or princess is placed. We can also remove the Argument Error for odd numbers only, as the bot no longer needs to be placed in the middle. 
+---
+
+#### Grid
+As far as creating the grid goes, we can keep most functionality the same except on where the bot or princess is placed. The bot will take in arguments, and the princess will be randomized. We can also remove the Argument Error for odd numbers only, as the bot no longer needs to be placed in the middle. 
+
+#### Bot Movement
+Again, functionality will be the same as far as direct movement. However, requirements will need to be met if bot and princess are one the same rows/columns in order to determine movement. 
+
+#### Next Move
+Next Move will return the output from running the movements, and only move the bot once. Instead of running `path_to_princess.first` making a `next_move` method seems to follow the tasks description more accurately. 
 
