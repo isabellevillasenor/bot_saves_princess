@@ -1,39 +1,38 @@
 require_relative 'grid'
-require_relative 'bot'
-
-class SavePrincess < Bot
-  attr_accessor :grid,
+class SavePrincess
+  attr_reader :grid,
                 :bot_row,
                 :bot_column,
                 :princess_row,
-                :princess_column
+                :princess_column,
+                :move
 
-  def initialize(grid_size, row, column)
-    @grid = Grid.new(grid_size, row, column)
-    @bot = Bot.new(@grid)
-    @bot_column = @bot.bot_column
-    @bot_row = @bot.bot_row
-    @princess_column = @bot.princess_column
-    @princess_row = @bot.princess_row
+  def initialize(n, row, column, grid)
+    @grid = Grid.new(grid)
+    @bot_column = column
+    @bot_row = row
+    @grid.princess_coordinates
+    @princess_column = @grid.princess_c
+    @princess_row = @grid.princess_r
+    @move = []
   end
 
   def next_move
-    move = nil
     if (@bot_row == @princess_row)
-      move = horizontal_movement
+      horizontal_movement
     else 
-      move = vertical_movement
+      vertical_movement
     end
-    move
+    puts @move
   end
 
   def horizontal_movement
     if @bot_column > @princess_column
       @bot_column -= 1
-      'LEFT'
+      @move << 'LEFT'
     elsif @bot_column < @princess_column
       @bot_column += 1
-      'RIGHT'
+      @move << 'RIGHT'
     end
   end
 
@@ -41,23 +40,19 @@ class SavePrincess < Bot
     if @bot_column == @princess_column
       if @bot_row > @princess_row
         @bot_row -= 1
-        'UP'
+        @move << 'UP'
       elsif @bot_row < @princess_row
         @bot_row += 1
-        'DOWN'
+        @move << 'DOWN'
       end
     else
       if @bot_row > @princess_row
         @bot_row -= 1
-        'UP'
+        @move << 'UP'
       elsif @bot_row < @princess_row
         @bot_row += 1
-        'DOWN'
+        @move << 'DOWN'
       end
     end
-  end
-
-  def princess_saved
-    [@bot_row, @bot_column] == [@princess_row, @princess_column]
   end
 end
