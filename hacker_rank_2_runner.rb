@@ -1,4 +1,3 @@
-require 'pry'
 class Grid
   attr_reader :grid,
               :princess_r,
@@ -74,13 +73,7 @@ class SavePrincess
       end
     end
   end
-
-  def princess_saved
-    [@bot_row, @bot_column] == [@princess_row, @princess_column]
-  end
 end
-
-
 
 def nextMove(n,r,c,grid)
   save_princess = SavePrincess.new(n, r, c, grid)
